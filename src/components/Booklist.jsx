@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './booklistStyle.css';
-import axios from 'axios';
+import { fetchBooks, shuffleArray } from '../api';
 import BookCard from './BookCard';
 
 function Booklist({ selectedOption }) {
@@ -8,23 +8,17 @@ function Booklist({ selectedOption }) {
   const [groupedBooks, setGroupedBooks] = useState({});
 
   useEffect(() => {
-    const API_KEY = 'AIzaSyDNjtBJ-rWEmuA6lsSRKvSByso0OQqsgNU';
     const QUERY = 'fantasy';
     const MAX_RESULTS = 30;
-    const API_URL = `https://www.googleapis.com/books/v1/volumes?q=${QUERY}&maxResults=${MAX_RESULTS}&key=${API_KEY}`;
 
-    axios
-      .get(API_URL)
-      .then(response => {
-        const bookData = response?.data.items || [];
-        console.log(bookData);
-        setBooks(bookData);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
+    fetchBooks(QUERY, MAX_RESULTS).then(bookData => {
+      const shuffledBooks = shuffleArray(bookData);
+      console.log(shuffledBooks);
+      setBooks(shuffledBooks);
+    });
+  }, []);
+  useEffect(() => {
     const grouped = groupBooksBy(books, selectedOption);
-
     setGroupedBooks(grouped);
   }, [books, selectedOption]);
 

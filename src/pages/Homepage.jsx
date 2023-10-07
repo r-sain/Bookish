@@ -1,19 +1,10 @@
 import { useEffect, useState } from 'react';
 import Banner from '../assets/banner.png';
 import './homepageStyles.css';
-import axios from 'axios';
-
-function shuffleArray(array) {
-  const shuffledArray = [...array];
-  for (let i = shuffledArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-  }
-  return shuffledArray;
-}
+import { fetchBooks, shuffleArray } from '../api';
 
 function truncateString(str, maxLength) {
-  if (str.length > maxLength) {
+  if (str?.length > maxLength) {
     return str.slice(0, maxLength) + '...';
   } else {
     return str;
@@ -24,24 +15,15 @@ function Homepage() {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const API_KEY = 'AIzaSyDNjtBJ-rWEmuA6lsSRKvSByso0OQqsgNU';
-    const QUERY = "children's storybook";
+    const QUERY = 'children';
     const MAX_RESULTS = 9;
-    const API_URL = `https://www.googleapis.com/books/v1/volumes?q=${QUERY}&maxResults=${MAX_RESULTS}&key=${API_KEY}`;
 
-    axios
-      .get(API_URL)
-      .then(response => {
-        const bookData = response?.data.items;
-        const shuffledBooks = shuffleArray(bookData);
-        console.log(shuffledBooks);
-        setBooks(shuffledBooks);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
+    fetchBooks(QUERY, MAX_RESULTS).then(bookData => {
+      const shuffledBooks = shuffleArray(bookData);
+      console.log(shuffledBooks);
+      setBooks(shuffledBooks);
+    });
   }, []);
-
   return (
     <div id="homepage">
       <div className="welcome-section">

@@ -1,0 +1,18 @@
+/* AuthorBooksCarousel.css */
+.author-books-carousel {
+  /* margin: 20px; */
+  background-color: yellow;
+}
+
+.slick-prev,
+.slick-next {
+  font-size: 24px;
+}
+
+.slick-dots {
+  bottom: -30px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+}

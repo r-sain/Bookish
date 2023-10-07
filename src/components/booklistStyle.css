@@ -21,6 +21,14 @@
 .groups {
   display: flex;
   flex-direction: column;
+  padding: 10px;
+}
+
+.groups h2 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  font-weight: 200;
+  padding-left: 15px;
 }
 
 .horizontal {
