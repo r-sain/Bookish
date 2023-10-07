@@ -1,0 +1,28 @@
+#booklist-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  gap: 16px;
+}
+
+.booklist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 30px;
+}
+
+.vertical-list {
+  flex-direction: column;
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
+}
+
+.horizontal {
+  display: flex;
+}

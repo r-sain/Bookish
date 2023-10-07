@@ -1,0 +1,15 @@
+#root {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  flex: 1;
+  height: 90px;
+}
+
+.mainView {
+  flex: 9;
+  height: calc(100vh - 90px);
+  background-color: #f5f1ed;
+}

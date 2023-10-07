@@ -1,0 +1,47 @@
+#booksPage {
+  height: calc(100vh - 90px);
+  background-color: white;
+  overflow-y: hidden;
+}
+
+#booksPage .books-top-bar {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-bottom: 1px solid rgb(229, 229, 229);
+}
+
+#booksPage .books-top-bar .heading {
+  font-size: 1.4rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 100;
+}
+
+#booksPage .books-top-bar .filter {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+#booksPage .books-top-bar .filter label {
+  font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+}
+
+#booksPage .books-top-bar #dropdown {
+  height: 30px;
+  width: 100px;
+  border-radius: 8px;
+  border: 1px solid rgb(159, 159, 159);
+}
+
+.books-display {
+  height: calc(100vh - 90px - 70px);
+  overflow-y: scroll;
+}
