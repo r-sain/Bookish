@@ -52,7 +52,12 @@ function Cart() {
           </div>
           <div className="shipping">
             <h5>Delivery</h5>
-            <h5>Free</h5>
+            <h5>{cartTotal > 1000 ? 'Free' : '₹100'}</h5>
+          </div>
+          <div className="shipping2">
+            {cartTotal < 1000
+              ? 'Add a total of ₹ 1000 or more to get free delivery'
+              : ''}
           </div>
           <div className="checkout">
             <button>Checkout</button>
