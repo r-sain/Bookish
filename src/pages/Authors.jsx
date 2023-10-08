@@ -40,16 +40,13 @@ function Authors() {
     }
   };
 
-  console.log(cart);
   useEffect(() => {
     const query = 'fantasy';
     const maxResults = 30;
 
     fetchBooks(query, maxResults)
       .then(allAuthors => {
-        console.log('all', allAuthors);
         const uniqueAuthors = [...new Set(allAuthors)];
-        console.log('unique', uniqueAuthors);
         setAuthors(uniqueAuthors);
       })
       .catch(error => {

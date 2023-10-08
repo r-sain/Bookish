@@ -20,7 +20,6 @@ function Homepage() {
 
     fetchBooks(QUERY, MAX_RESULTS).then(bookData => {
       const shuffledBooks = shuffleArray(bookData);
-      console.log(shuffledBooks);
       setBooks(shuffledBooks);
     });
   }, []);

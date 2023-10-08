@@ -4,7 +4,6 @@ import Payments from '../assets/payments.png';
 function Cart() {
   const { cart, addToCart, removeFromCart, minusCount } = useCart();
 
-  console.log(cart);
   const handleRemove = itemId => {
     removeFromCart(itemId);
   };
@@ -12,7 +11,6 @@ function Cart() {
     (total, item) => total + item.price * item.count,
     0
   );
-  console.log(cart, 'cartpage');
   return (
     <div id="cart">
       <div className="cart-left">
@@ -63,8 +61,6 @@ function Cart() {
             <img src={Payments} alt="payments" />
           </div>
         </div>
-
-        {/* <div className="totalShip">Free Shipping for you !</div> */}
       </div>
     </div>
   );
