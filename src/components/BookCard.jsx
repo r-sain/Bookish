@@ -1,9 +1,45 @@
 import './bookCard.css';
+import BookLogo from '../assets/booklogo.png';
+import Colorcart from '../assets/cartcolor.png';
+import { useCart } from '../CartContext';
+import { useState } from 'react';
+
 function BookCard({ book }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    const cartItem = {
+      id: book.id,
+      image: book.volumeInfo.imageLinks?.thumbnail || (
+        <img src={BookLogo} alt="booklogo"></img>
+      ),
+      name: book.volumeInfo.title,
+      price: book.saleInfo.listPrice?.amount || 750.55,
+      quantity: 1,
+    };
+
+    addToCart(cartItem);
+  };
+
   return (
-    <div className="book-card">
+    <div
+      className={`book-card ${isHovered ? 'hovered' : ''}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {isHovered && (
+        <span className="add-to-cart-button" onClick={handleAddToCart}>
+          <img src={Colorcart} alt="" />
+        </span>
+      )}
       <img
-        src={book.volumeInfo.imageLinks?.thumbnail || 'placeholder-image-url'}
+        src={
+          book.volumeInfo.imageLinks?.thumbnail || (
+            <img src={BookLogo} alt="booklogo"></img>
+          )
+        }
         alt={book.volumeInfo.title}
       />
       <h3>

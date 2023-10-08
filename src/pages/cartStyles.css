@@ -73,6 +73,8 @@
 #itemTotal {
   margin-right: 15px;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: aqua;
+  flex: 1;
 }
 #cart .cart-left .product-list .book-item img {
   width: 80px;
