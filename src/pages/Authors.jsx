@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchBooks } from '../api';
 import './authorsStyle.css';
 import { useCart } from '../CartContext';
+import Booklogo from '../assets/booklogo.png';
 
 function Authors() {
   const [authors, setAuthors] = useState([]);
@@ -128,8 +129,12 @@ function Authors() {
                 {selectedAuthor && (
                   <div className="view">
                     <img
-                      src={selectedAuthor.volumeInfo?.imageLinks.thumbnail}
-                      alt=""
+                      src={
+                        selectedAuthor.volumeInfo?.imageLinks?.thumbnail || {
+                          Booklogo,
+                        }
+                      }
+                      alt="thumbnail"
                     />
                     <p>{selectedAuthor.volumeInfo?.title}</p>
                     <p>
