@@ -4,7 +4,6 @@ import Authors from '../pages/Authors';
 import Homepage from '../pages/Homepage';
 import Cart from '../pages/Cart';
 import { CartProvider } from '../CartContext.jsx';
-
 function MainView() {
   return (
     <CartProvider>

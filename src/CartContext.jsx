@@ -1,44 +1,50 @@
-import { createContext, useReducer, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const CartContext = createContext();
 
-export function useCart() {
-  return useContext(CartContext);
-}
+export function CartProvider({ children }) {
+  const [cart, setCart] = useState({});
 
-const cartReducer = (state, action) => {
-  switch (action.type) {
-    case 'ADD_TO_CART':
-      // Check if the item is already in the cart
-      const existingItem = state.find(item => item.id === action.payload.id);
+  const addToCart = item => {
+    const updatedCart = { ...cart };
 
-      if (existingItem) {
-        // If it's already in the cart, update the quantity
-        return state.map(item =>
-          item.id === action.payload.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-      } else {
-        // If it's not in the cart, add it
-        return [...state, { ...action.payload, quantity: 1 }];
+    if (updatedCart[item.id]) {
+      updatedCart[item.id].count++;
+    } else {
+      updatedCart[item.id] = { ...item, count: 1 };
+    }
+
+    setCart(updatedCart);
+  };
+
+  const minusCount = itemId => {
+    const updatedCart = { ...cart };
+
+    if (updatedCart[itemId]) {
+      updatedCart[itemId].count--;
+      if (updatedCart[itemId].count <= 0) {
+        delete updatedCart[itemId];
       }
 
-    case 'REMOVE_FROM_CART':
-      // Remove the item from the cart
-      return state.filter(item => item.id !== action.payload.id);
-
-    default:
-      return state;
-  }
-};
-
-export function CartProvider({ children }) {
-  const [cart, dispatch] = useReducer(cartReducer, []);
-
+      setCart(updatedCart);
+    }
+  };
+  const removeFromCart = itemId => {
+    const updatedCart = { ...cart };
+    if (updatedCart[itemId]) {
+      delete updatedCart[itemId];
+      setCart(updatedCart);
+    }
+  };
   return (
-    <CartContext.Provider value={{ cart, dispatch }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, minusCount }}
+    >
       {children}
     </CartContext.Provider>
   );
+}
+
+export function useCart() {
+  return useContext(CartContext);
 }

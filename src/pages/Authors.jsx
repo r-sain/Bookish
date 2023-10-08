@@ -9,8 +9,37 @@ function Authors() {
   const [booksByAuthor, setBooksByAuthor] = useState([]);
   const [currentIndex, setCurrentIndex] = useState();
   const selectedAuthor = booksByAuthor[currentIndex];
+  const [cart, setCart] = useState({});
 
-  console.log(authors);
+  //   const updatedCart = { ...cart };
+
+  //   // Check if the item already exists in the cart
+  //   if (updatedCart[item.id]) {
+  //     // If it exists, increase the count
+  //     updatedCart[item.id].count++;
+  //   } else {
+  //     // If it doesn't exist, add it to the cart with count 1
+  //     updatedCart[item.id] = { ...item, count: 1 };
+  //   }
+
+  //   // Update the cart state
+  //   setCart(updatedCart);
+  // };
+  const { addToCart } = useCart();
+
+  const addBookToCart = () => {
+    if (selectedAuthor) {
+      const book = {
+        id: selectedAuthor.id || 'defaultId',
+        name: selectedAuthor.volumeInfo.title,
+        price: selectedAuthor.saleInfo.listPrice?.amount || 750.55,
+        image: selectedAuthor.volumeInfo?.imageLinks?.thumbnail || '',
+      };
+      addToCart(book);
+    }
+  };
+
+  console.log(cart);
   useEffect(() => {
     const query = 'fantasy';
     const maxResults = 30;
@@ -110,7 +139,7 @@ function Authors() {
                       INR
                     </p>
 
-                    <button>Add to Cart</button>
+                    <button onClick={() => addBookToCart()}>Add to Cart</button>
                   </div>
                 )}
               </div>

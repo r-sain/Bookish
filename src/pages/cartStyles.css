@@ -1,0 +1,160 @@
+#cart {
+  height: calc(100vh - 90px);
+  display: flex;
+  background-color: white;
+}
+
+#cart .cart-left {
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+}
+#cart .cart-left .head {
+  font-size: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgb(215, 215, 215);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+#cart .cart-left .table-headers {
+  display: flex;
+  justify-content: space-evenly;
+}
+#cart .cart-left .product-list {
+  overflow-y: scroll;
+}
+#itemImage {
+}
+#itemName {
+  height: 100%;
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+}
+#cart .cart-left .product-list .book-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 15px;
+}
+#itemImage {
+  display: flex;
+  flex: 1;
+  padding-left: 15px;
+}
+#itemName {
+  display: flex;
+  flex: 4;
+}
+#itemPrice {
+  display: flex;
+  flex: 2;
+  gap: 10px;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#itemCount {
+  display: flex;
+  flex: 1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#itemRemoveBtn {
+  display: flex;
+  flex: 0.2;
+  margin-left: 15px;
+  cursor: pointer;
+}
+#itemRemoveBtn span {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(198, 0, 0);
+}
+#itemTotal {
+  margin-right: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#cart .cart-left .product-list .book-item img {
+  width: 80px;
+}
+#incDecBtn {
+  cursor: pointer;
+  font-weight: 800;
+}
+
+#cart .cart-right {
+  display: flex;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.totalHead {
+  width: 90%;
+  border-bottom: 1px solid rgb(215, 215, 215);
+  height: 46.5px;
+  display: flex;
+  justify-content: center;
+}
+.totalBody {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.subTotal {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#cart .cart-right h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 200;
+}
+#cart .cart-right h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 200;
+}
+.shipping {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 200;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #7b7b7b;
+}
+.checkout {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkout button {
+  width: 120px;
+  height: 40px;
+  background-color: rgb(0, 189, 0);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+.payments {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 150px;
+}
+.payments img {
+  width: 300px;
+  height: 150px;
+}
+.totalShip {
+  color: #7b7b7b;
+}
