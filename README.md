@@ -1,3 +1,5 @@
+Hosted Application : https://endearing-sorbet-72fa58.netlify.app/
+
 Steps to run the app locally:
 1. Install vite on your machine
 2. Clone the codebase and then install dependencies
